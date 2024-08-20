@@ -19,8 +19,8 @@
       "destination" : {
         "comments" : "",
         "groupId" : "flow-contents-group",
-        "id" : "9d45676c-7828-3087-a412-a25f0723ed80",
-        "name" : "Wait",
+        "id" : "154d6671-9972-3cac-97e4-42e4e873048c",
+        "name" : "SplitText",
         "type" : "PROCESSOR"
       },
       "flowFileExpiration" : "0 sec",
@@ -38,6 +38,36 @@
         "groupId" : "flow-contents-group",
         "id" : "4af3aeee-29b2-3de3-93eb-d8de5d2300a3",
         "name" : "GetFile",
+        "type" : "PROCESSOR"
+      },
+      "zIndex" : 0
+    }, {
+      "backPressureDataSizeThreshold" : "1 GB",
+      "backPressureObjectThreshold" : 10000,
+      "bends" : [ ],
+      "componentType" : "CONNECTION",
+      "destination" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "9d45676c-7828-3087-a412-a25f0723ed80",
+        "name" : "Wait",
+        "type" : "PROCESSOR"
+      },
+      "flowFileExpiration" : "0 sec",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "21411a1d-f729-300d-99f0-5486e226db5c",
+      "labelIndex" : 0,
+      "loadBalanceCompression" : "DO_NOT_COMPRESS",
+      "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+      "name" : "",
+      "partitioningAttribute" : "",
+      "prioritizers" : [ ],
+      "selectedRelationships" : [ "splits" ],
+      "source" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "154d6671-9972-3cac-97e4-42e4e873048c",
+        "name" : "SplitText",
         "type" : "PROCESSOR"
       },
       "zIndex" : 0
@@ -192,11 +222,11 @@
       "name" : "GetFile",
       "penaltyDuration" : "30 sec",
       "position" : {
-        "x" : -456.0,
-        "y" : -320.0
+        "x" : -616.0,
+        "y" : -408.0
       },
       "properties" : {
-        "Keep Source File" : "false",
+        "Keep Source File" : "true",
         "Minimum File Age" : "0 sec",
         "Polling Interval" : "0 sec",
         "Input Directory" : "C:\\Hesaba\\tools\\opt",
@@ -300,6 +330,79 @@
       "schedulingStrategy" : "TIMER_DRIVEN",
       "style" : { },
       "type" : "org.apache.nifi.processors.standard.GetFile",
+      "yieldDuration" : "1 sec"
+    }, {
+      "autoTerminatedRelationships" : [ "original", "failure" ],
+      "backoffMechanism" : "PENALIZE_FLOWFILE",
+      "bulletinLevel" : "WARN",
+      "bundle" : {
+        "artifact" : "nifi-standard-nar",
+        "group" : "org.apache.nifi",
+        "version" : "2.0.0-M4"
+      },
+      "comments" : "",
+      "componentType" : "PROCESSOR",
+      "concurrentlySchedulableTaskCount" : 1,
+      "executionNode" : "ALL",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "154d6671-9972-3cac-97e4-42e4e873048c",
+      "maxBackoffPeriod" : "10 mins",
+      "name" : "SplitText",
+      "penaltyDuration" : "30 sec",
+      "position" : {
+        "x" : 44.0,
+        "y" : -404.0
+      },
+      "properties" : {
+        "Remove Trailing Newlines" : "true",
+        "Header Line Count" : "1",
+        "Line Split Count" : "1"
+      },
+      "propertyDescriptors" : {
+        "Remove Trailing Newlines" : {
+          "displayName" : "Remove Trailing Newlines",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Remove Trailing Newlines",
+          "sensitive" : false
+        },
+        "Maximum Fragment Size" : {
+          "displayName" : "Maximum Fragment Size",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Maximum Fragment Size",
+          "sensitive" : false
+        },
+        "Header Line Marker Characters" : {
+          "displayName" : "Header Line Marker Characters",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Header Line Marker Characters",
+          "sensitive" : false
+        },
+        "Header Line Count" : {
+          "displayName" : "Header Line Count",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Header Line Count",
+          "sensitive" : false
+        },
+        "Line Split Count" : {
+          "displayName" : "Line Split Count",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Line Split Count",
+          "sensitive" : false
+        }
+      },
+      "retriedRelationships" : [ ],
+      "retryCount" : 10,
+      "runDurationMillis" : 0,
+      "scheduledState" : "ENABLED",
+      "schedulingPeriod" : "0 sec",
+      "schedulingStrategy" : "TIMER_DRIVEN",
+      "style" : { },
+      "type" : "org.apache.nifi.processors.standard.SplitText",
       "yieldDuration" : "1 sec"
     } ],
     "remoteProcessGroups" : [ ],
