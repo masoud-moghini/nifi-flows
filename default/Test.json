@@ -9,9 +9,39 @@
     "versionCount" : 0
   },
   "flowContents" : {
-    "comments" : "",
+    "comments" : "Educational Process Group which follows tutorial",
     "componentType" : "PROCESS_GROUP",
-    "connections" : [ ],
+    "connections" : [ {
+      "backPressureDataSizeThreshold" : "1 GB",
+      "backPressureObjectThreshold" : 10000,
+      "bends" : [ ],
+      "componentType" : "CONNECTION",
+      "destination" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "9d45676c-7828-3087-a412-a25f0723ed80",
+        "name" : "Wait",
+        "type" : "PROCESSOR"
+      },
+      "flowFileExpiration" : "0 sec",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "7be32ed6-a65e-31e6-b2ea-1432c5c53a97",
+      "labelIndex" : 0,
+      "loadBalanceCompression" : "DO_NOT_COMPRESS",
+      "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+      "name" : "",
+      "partitioningAttribute" : "",
+      "prioritizers" : [ "org.apache.nifi.prioritizer.FirstInFirstOutPrioritizer" ],
+      "selectedRelationships" : [ "success" ],
+      "source" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "4af3aeee-29b2-3de3-93eb-d8de5d2300a3",
+        "name" : "GetFile",
+        "type" : "PROCESSOR"
+      },
+      "zIndex" : 0
+    } ],
     "controllerServices" : [ ],
     "defaultBackPressureDataSizeThreshold" : "1 GB",
     "defaultBackPressureObjectThreshold" : 10000,
@@ -25,14 +55,253 @@
     "inputPorts" : [ ],
     "labels" : [ ],
     "maxConcurrentTasks" : 1,
-    "name" : "Test remote",
+    "name" : "Edu",
     "outputPorts" : [ ],
     "position" : {
       "x" : 0.0,
       "y" : 0.0
     },
     "processGroups" : [ ],
-    "processors" : [ ],
+    "processors" : [ {
+      "autoTerminatedRelationships" : [ ],
+      "backoffMechanism" : "PENALIZE_FLOWFILE",
+      "bulletinLevel" : "WARN",
+      "bundle" : {
+        "artifact" : "nifi-standard-nar",
+        "group" : "org.apache.nifi",
+        "version" : "2.0.0-M4"
+      },
+      "comments" : "",
+      "componentType" : "PROCESSOR",
+      "concurrentlySchedulableTaskCount" : 1,
+      "executionNode" : "ALL",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "9d45676c-7828-3087-a412-a25f0723ed80",
+      "maxBackoffPeriod" : "10 mins",
+      "name" : "Wait",
+      "penaltyDuration" : "30 sec",
+      "position" : {
+        "x" : -456.0,
+        "y" : -104.0
+      },
+      "properties" : {
+        "wait-buffer-count" : "1",
+        "wait-mode" : "wait",
+        "attribute-copy-mode" : "keeporiginal",
+        "releasable-flowfile-count" : "1",
+        "expiration-duration" : "10 min",
+        "target-signal-count" : "1"
+      },
+      "propertyDescriptors" : {
+        "wait-buffer-count" : {
+          "displayName" : "Wait Buffer Count",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "wait-buffer-count",
+          "sensitive" : false
+        },
+        "wait-mode" : {
+          "displayName" : "Wait Mode",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "wait-mode",
+          "sensitive" : false
+        },
+        "attribute-copy-mode" : {
+          "displayName" : "Attribute Copy Mode",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "attribute-copy-mode",
+          "sensitive" : false
+        },
+        "distributed-cache-service" : {
+          "displayName" : "Distributed Cache Service",
+          "dynamic" : false,
+          "identifiesControllerService" : true,
+          "name" : "distributed-cache-service",
+          "sensitive" : false
+        },
+        "releasable-flowfile-count" : {
+          "displayName" : "Releasable FlowFile Count",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "releasable-flowfile-count",
+          "sensitive" : false
+        },
+        "release-signal-id" : {
+          "displayName" : "Release Signal Identifier",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "release-signal-id",
+          "sensitive" : false
+        },
+        "signal-counter-name" : {
+          "displayName" : "Signal Counter Name",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "signal-counter-name",
+          "sensitive" : false
+        },
+        "expiration-duration" : {
+          "displayName" : "Expiration Duration",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "expiration-duration",
+          "sensitive" : false
+        },
+        "target-signal-count" : {
+          "displayName" : "Target Signal Count",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "target-signal-count",
+          "sensitive" : false
+        },
+        "wait-penalty-duration" : {
+          "displayName" : "Wait Penalty Duration",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "wait-penalty-duration",
+          "sensitive" : false
+        }
+      },
+      "retriedRelationships" : [ ],
+      "retryCount" : 10,
+      "runDurationMillis" : 25,
+      "scheduledState" : "ENABLED",
+      "schedulingPeriod" : "0 sec",
+      "schedulingStrategy" : "TIMER_DRIVEN",
+      "style" : { },
+      "type" : "org.apache.nifi.processors.standard.Wait",
+      "yieldDuration" : "1 sec"
+    }, {
+      "autoTerminatedRelationships" : [ ],
+      "backoffMechanism" : "PENALIZE_FLOWFILE",
+      "bulletinLevel" : "WARN",
+      "bundle" : {
+        "artifact" : "nifi-standard-nar",
+        "group" : "org.apache.nifi",
+        "version" : "2.0.0-M4"
+      },
+      "comments" : "",
+      "componentType" : "PROCESSOR",
+      "concurrentlySchedulableTaskCount" : 1,
+      "executionNode" : "ALL",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "4af3aeee-29b2-3de3-93eb-d8de5d2300a3",
+      "maxBackoffPeriod" : "10 mins",
+      "name" : "GetFile",
+      "penaltyDuration" : "30 sec",
+      "position" : {
+        "x" : -456.0,
+        "y" : -320.0
+      },
+      "properties" : {
+        "Keep Source File" : "false",
+        "Minimum File Age" : "0 sec",
+        "Polling Interval" : "0 sec",
+        "Input Directory" : "C:\\Hesaba\\tools\\opt",
+        "Batch Size" : "10",
+        "Minimum File Size" : "0 B",
+        "Ignore Hidden Files" : "true",
+        "Recurse Subdirectories" : "true",
+        "File Filter" : "[^\\.].*"
+      },
+      "propertyDescriptors" : {
+        "Keep Source File" : {
+          "displayName" : "Keep Source File",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Keep Source File",
+          "sensitive" : false
+        },
+        "Minimum File Age" : {
+          "displayName" : "Minimum File Age",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Minimum File Age",
+          "sensitive" : false
+        },
+        "Polling Interval" : {
+          "displayName" : "Polling Interval",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Polling Interval",
+          "sensitive" : false
+        },
+        "Input Directory" : {
+          "displayName" : "Input Directory",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Input Directory",
+          "sensitive" : false
+        },
+        "Maximum File Age" : {
+          "displayName" : "Maximum File Age",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Maximum File Age",
+          "sensitive" : false
+        },
+        "Batch Size" : {
+          "displayName" : "Batch Size",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Batch Size",
+          "sensitive" : false
+        },
+        "Maximum File Size" : {
+          "displayName" : "Maximum File Size",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Maximum File Size",
+          "sensitive" : false
+        },
+        "Minimum File Size" : {
+          "displayName" : "Minimum File Size",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Minimum File Size",
+          "sensitive" : false
+        },
+        "Ignore Hidden Files" : {
+          "displayName" : "Ignore Hidden Files",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Ignore Hidden Files",
+          "sensitive" : false
+        },
+        "Recurse Subdirectories" : {
+          "displayName" : "Recurse Subdirectories",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Recurse Subdirectories",
+          "sensitive" : false
+        },
+        "File Filter" : {
+          "displayName" : "File Filter",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "File Filter",
+          "sensitive" : false
+        },
+        "Path Filter" : {
+          "displayName" : "Path Filter",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Path Filter",
+          "sensitive" : false
+        }
+      },
+      "retriedRelationships" : [ ],
+      "retryCount" : 10,
+      "runDurationMillis" : 0,
+      "scheduledState" : "ENABLED",
+      "schedulingPeriod" : "10 sec",
+      "schedulingStrategy" : "TIMER_DRIVEN",
+      "style" : { },
+      "type" : "org.apache.nifi.processors.standard.GetFile",
+      "yieldDuration" : "1 sec"
+    } ],
     "remoteProcessGroups" : [ ],
     "scheduledState" : "ENABLED",
     "statelessFlowTimeout" : "1 min"
