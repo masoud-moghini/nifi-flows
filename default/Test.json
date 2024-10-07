@@ -1069,7 +1069,8 @@
         "Tar Modified Time" : "${file.lastModifiedTime}",
         "Delimiter Strategy" : "Text",
         "Merge Format" : "Binary Concatenation",
-        "Header File" : "version ,user_id ,details ,network ,amount ,transaction_id ,memo ,transaction_destination\n",
+        "Demarcator File" : "\n",
+        "Header File" : "version,user_id,details,network,amount,transaction_id,memo,transaction_destination\n",
         "mergecontent-metadata-strategy" : "Do Not Merge Uncommon Metadata",
         "Minimum Number of Entries" : "1"
       },
@@ -1346,7 +1347,7 @@
         "Max String Length" : "20 MB",
         "Transform Cache Size" : "1",
         "Pretty Print" : "false",
-        "Jolt Specification" : "[\n  {\n    \"operation\":\"shift\",\n    \"spec\":{\n        \"version\" : \"version\",\n  \t\t\"user_id\" : \"user_id\",\n  \t\t\"details\" : \"details\",\n  \t\t\"network\" : \"network\",\n        \"cryptocurrency\" : \"network\",\n  \t\t\"amount\" : \"amount\",\n  \t\t\"transaction_id\" : \"transaction_id\",\n  \t\t\"memo\" : \"memo\",\n \t\t\"transaction_destination\" : \"transaction_destination\",\n  \t\t\"transaction_source\" : \"transaction_source\"\n    }\n  },\n  {  \n    \"operation\":\"modify-overwrite-beta\",\n    \"spec\":{\n        \"network\" : \"=join(',',@(1,network))\"\n    }\n  }\n\n]"
+        "Jolt Specification" : "[\n  {\n    \"operation\":\"shift\",\n    \"spec\":{\n        \"version\" : \"version\",\n  \t\t\"user_id\" : \"user_id\",\n  \t\t\"details\" : \"details\",\n  \t\t\"network\" : \"network\",\n        \"cryptocurrency\" : \"network\",\n  \t\t\"amount\" : \"amount\",\n  \t\t\"transaction_id\" : \"transaction_id\",\n  \t\t\"memo\" : \"memo\",\n \t\t\"transaction_destination\" : \"transaction_destination\",\n  \t\t\"transaction_source\" : \"transaction_source\"\n    }\n  },\n  {  \n    \"operation\":\"modify-overwrite-beta\",\n    \"spec\":{\n        \"network\" : \"=join('-',@(1,network))\"\n    }\n  }\n\n]"
       },
       "propertyDescriptors" : {
         "Jolt Transform" : {
