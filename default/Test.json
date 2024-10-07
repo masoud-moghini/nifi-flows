@@ -1069,7 +1069,7 @@
         "Tar Modified Time" : "${file.lastModifiedTime}",
         "Delimiter Strategy" : "Text",
         "Merge Format" : "Binary Concatenation",
-        "Header File" : "version,user_id,details ,network,amount,transaction_id,memo,transaction_destination,transaction_source",
+        "Header File" : "version ,user_id ,details ,network ,amount ,transaction_id ,memo ,transaction_destination\n",
         "mergecontent-metadata-strategy" : "Do Not Merge Uncommon Metadata",
         "Minimum Number of Entries" : "1"
       },
